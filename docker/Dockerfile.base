@@ -1,0 +1,6 @@
+FROM node:16-alpine
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories && \
+    apk add docker-cli --no-cache
+
+# docker build -t eip-reg.tencentcloudcr.com/caip/node:16-alpine -f docker/Dockerfile.base .

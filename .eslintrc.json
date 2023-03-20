@@ -1,0 +1,43 @@
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "no-alert": "error",
+    "@typescript-eslint/no-explicit-any": [
+      "off"
+    ],
+    "react/prop-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "react/react-in-jsx-scope": "off",
+    "no-debugger": "error",
+    "max-depth": [
+      1,
+      5
+    ],
+    "complexity": [
+      "warn",
+      {
+        "max": 10
+      }
+    ],
+    "@typescript-eslint/no-empty-interface": "warn",
+    "react/self-closing-comp": "error",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "react/display-name": "off"
+  }
+}
