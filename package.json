@@ -14,7 +14,8 @@
     "eslint": "npx eslint src --cache --ext .js,.jsx,.ts,.tsx",
     "eslint:fix": "npx eslint src --fix --cache --ext  .js,.jsx,.ts,.tsx",
     "postinstall": "husky install",
-    "prepush": "yarn stylelint:fix\nyarn prettier:fix\nyarn eslint:fix",
+    "lintall": "yarn stylelint\nyarn eslint",
+    "prepush": "yarn prettier:fix\nyarn stylelint:fix\nyarn eslint:fix",
     "ytt": "npx ytt"
   },
   "keywords": [

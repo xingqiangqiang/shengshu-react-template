@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn stylelint:fix
-yarn prettier:fix
-yarn eslint
+yarn lintall
+
+# 获取上面脚本的退出码
+exitCode="$?"
+exit $exitCode
