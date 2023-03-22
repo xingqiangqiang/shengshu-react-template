@@ -1,9 +1,11 @@
-/** @type {import('vite').UserConfig} */
+/** @typing {import('vite').UserConfig} */
 import react from '@vitejs/plugin-react';
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { createHtmlPlugin } from 'vite-plugin-html';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
+const projectName = '测试title';
 const port = 8080;
 const base = '/';
 console.log('当前环境:', process.env.NODE_ENV);
@@ -48,6 +50,18 @@ export default defineConfig({
              * @default: __svg__icons__dom__
              */
             customDomId: '__svg__icons__dom__',
+        }),
+        // 详见 https://github.com/vbenjs/vite-plugin-html
+        createHtmlPlugin({
+            minify: true,
+            entry: 'src/main.tsx',
+            template: 'index.html',
+            inject: {
+                data: {
+                    title: projectName,
+                    injectScript: `<script src='./inject.js'></script>`,
+                },
+            },
         }),
     ],
     resolve: {

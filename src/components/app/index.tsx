@@ -12,7 +12,7 @@ const AppMenu: React.FC = () => {
         <div className={styles.app}>
             <div className="box">box</div>
             <Button type="primary">确定</Button>
-            {dayjs('2022-12-12 13:00:00').format('YYYY-MM-DD A HH:mm:ss')}
+            <p>{dayjs('2022-12-12 13:00:00').format('YYYY-MM-DD A HH:mm:ss')}</p>
             <ReduxTest />
             <LottiePlayerAnimation jsonFile={animation} playState loop />
         </div>

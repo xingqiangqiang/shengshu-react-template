@@ -4,7 +4,7 @@ const config = [
     {
         // 分类ids，可以将多个分类中的接口信息生成到同一个ts文件中
         ids: [59],
-        // 输出的ts文件存储模块文件夹名称，如本配置将输出到 src/ytt-type/index.ts中
+        // 输出的ts文件存储模块文件夹名称，如本配置将输出到 src/ytt-typing/index.ts中
         name: 'login',
         token: '25f374d369df0c03df57fb8cb23382c6a379f38eb2239aeb5408f4cc9405b692',
     },
