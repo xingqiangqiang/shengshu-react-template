@@ -13,14 +13,25 @@
     "stylelint:fix": "npx stylelint **/*.scss --fix --cache",
     "eslint": "npx eslint src --cache --ext .js,.jsx,.ts,.tsx",
     "eslint:fix": "npx eslint src --fix --cache --ext  .js,.jsx,.ts,.tsx",
-    "postinstall": "husky install",
-    "lintall": "yarn stylelint\nyarn eslint",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged",
     "lintfix": "yarn prettier:fix\nyarn stylelint:fix\nyarn eslint:fix",
     "ytt": "npx ytt"
   },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix --cache"
+    ],
+    "**/*.{js,jsx,ts,tsx,cjs,json,less,scss,css,md}": [
+      "prettier --write --cache"
+    ],
+    "**/*.{less,scss,css}": [
+      "stylelint --fix --cache"
+    ]
+  },
   "keywords": [
     "vite",
-    "sass",
+    "scss",
     "css modules",
     "react18.x",
     "hooks",
@@ -60,6 +71,7 @@
     "eslint": "^8.18.0",
     "eslint-plugin-react": "^7.30.1",
     "husky": "^8.0.1",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.7.0",
     "redux-logger": "^3.0.6",
     "stylelint": "^14.9.1",
