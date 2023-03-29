@@ -19,7 +19,7 @@
         "SwitchCase": 1
       }
     ],
-    "react/tsx-indent": ["error", 2],
+    "react/jsx-indent": ["error", 2],
     "no-alert": "error",
     "@typescript-eslint/no-explicit-any": ["off"],
     "react/prop-types": "off",

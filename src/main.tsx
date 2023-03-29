@@ -16,15 +16,15 @@ import './index.css';
 dayjs.locale('zh-cn');
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <React.Suspense fallback={<Spin tip="页面加载中..." />}>
-            <Provider store={store}>
-                <BrowserRouter basename={import.meta.env.BASE_URL}>
-                    <ConfigProvider theme={theme}>
-                        <App />
-                    </ConfigProvider>
-                </BrowserRouter>
-            </Provider>
-        </React.Suspense>
-    </React.StrictMode>,
+  <React.StrictMode>
+    <React.Suspense fallback={<Spin tip="页面加载中..." />}>
+      <Provider store={store}>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <ConfigProvider theme={theme}>
+            <App />
+          </ConfigProvider>
+        </BrowserRouter>
+      </Provider>
+    </React.Suspense>
+  </React.StrictMode>,
 );
