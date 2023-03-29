@@ -9,6 +9,7 @@
     "stylelint-scss"
   ],
   "rules": {
+    "indentation": 2,
     "selector-pseudo-class-no-unknown": [
       true,
       {
