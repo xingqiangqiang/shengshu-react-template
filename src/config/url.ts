@@ -6,27 +6,27 @@ import { lazy } from 'react';
  */
 
 const router = {
-    root: '/',
-    login: {
-        path: '/login',
-        title: '统一登录',
-        component: lazy(() => import('@/pages/login/main')),
-    },
-    notFound: {
-        path: '*',
-        title: '404',
-        component: lazy(() => import('@/components/not-found')),
-    },
-    noPermission: {
-        path: '/no-permission',
-        title: '无权限',
-        component: lazy(() => import('@/components/no-permission')),
-    },
-    app: {
-        path: '/app',
-        title: 'app',
-        component: lazy(() => import('@/components/app')),
-    },
+  root: '/',
+  login: {
+    path: '/login',
+    title: '统一登录',
+    component: lazy(() => import('@/pages/login/main')),
+  },
+  notFound: {
+    path: '*',
+    title: '404',
+    component: lazy(() => import('@/components/not-found')),
+  },
+  noPermission: {
+    path: '/no-permission',
+    title: '无权限',
+    component: lazy(() => import('@/components/no-permission')),
+  },
+  app: {
+    path: '/app',
+    title: 'app',
+    component: lazy(() => import('@/components/app')),
+  },
 };
 
 export default router;

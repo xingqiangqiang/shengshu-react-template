@@ -6,25 +6,25 @@ import { useNavigate } from 'react-router-dom';
 import styles from './index.module.scss';
 
 const NoPermission: React.FC = () => {
-    const navigate = useNavigate();
-    const backLogin = () => {
-        navigate('/login');
-    };
+  const navigate = useNavigate();
+  const backLogin = () => {
+    navigate('/login');
+  };
 
-    return (
-        <div className={styles.container}>
-            <img className={styles.img} src={noMatch} alt="404" />
-            <div>抱歉，超出访问许可</div>
-            <div className={styles.btns}>
-                <Button type="link" onClick={() => navigate(-1)}>
-                    返回上一级
-                </Button>
-                <Button type="link" onClick={backLogin}>
-                    切换账号
-                </Button>
-            </div>
-        </div>
-    );
+  return (
+    <div className={styles.container}>
+      <img className={styles.img} src={noMatch} alt="404" />
+      <div>抱歉，超出访问许可</div>
+      <div className={styles.btns}>
+        <Button type="link" onClick={() => navigate(-1)}>
+          返回上一级
+        </Button>
+        <Button type="link" onClick={backLogin}>
+          切换账号
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 export default NoPermission;
