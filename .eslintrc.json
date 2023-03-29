@@ -1,12 +1,6 @@
 {
-  "plugins": [
-    "react"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "plugins": ["react"],
+  "extends": ["eslint:recommended", "plugin:react/recommended", "plugin:@typescript-eslint/recommended"],
   "settings": {
     "react": {
       "version": "detect"
@@ -17,18 +11,22 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "no-alert": "error",
-    "@typescript-eslint/no-explicit-any": [
-      "off"
+    "@typescript-eslint/indent": [
+      "error",
+      2,
+      {
+        "VariableDeclarator": 2,
+        "SwitchCase": 1
+      }
     ],
+    "react/tsx-indent": ["error", 2],
+    "no-alert": "error",
+    "@typescript-eslint/no-explicit-any": ["off"],
     "react/prop-types": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "react/react-in-jsx-scope": "off",
     "no-debugger": "error",
-    "max-depth": [
-      1,
-      5
-    ],
+    "max-depth": [1, 5],
     "complexity": [
       "warn",
       {
