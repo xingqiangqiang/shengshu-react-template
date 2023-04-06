@@ -1,6 +1,5 @@
-import theme from '@/assats/style/theme';
 import store from '@/store';
-import { ConfigProvider, Spin } from 'antd';
+import { App as AntdApp, ConfigProvider, Spin } from 'antd';
 import 'antd/dist/reset.css';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
@@ -20,8 +19,10 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.Suspense fallback={<Spin tip="页面加载中..." />}>
       <Provider store={store}>
         <BrowserRouter basename={import.meta.env.BASE_URL}>
-          <ConfigProvider theme={theme}>
-            <App />
+          <ConfigProvider>
+            <AntdApp>
+              <App />
+            </AntdApp>
           </ConfigProvider>
         </BrowserRouter>
       </Provider>
