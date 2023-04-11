@@ -18,7 +18,7 @@ instance.interceptors.request.use((config: Config) => {
     message.loading({
       key: 1,
       duration: 0,
-      content: '加载中',
+      content: '加载中...',
     });
   }
 
@@ -35,20 +35,19 @@ instance.interceptors.request.use((config: Config) => {
 instance.interceptors.response.use(
   (response: AxiosResponse) => {
     message.destroy(1);
-
     if (response.status === 200) {
       /* 处理下载相关接口 */
       if (response.data instanceof Blob || response.data instanceof ArrayBuffer) {
         return Promise.resolve(response);
       }
-      if (response.data.statusCode === 200) {
+      if (response.data.code === 0) {
         return Promise.resolve(response.data);
       } else {
         if (!(response.config as Config).customMessage) {
           message.error({
             key: 1,
             duration: 3,
-            content: response.data.message || '接口异常,请重试!',
+            content: response.data.msg || '接口异常,请重试!',
           });
         }
         return Promise.reject(response.data);
@@ -82,12 +81,12 @@ instance.interceptors.response.use(
 );
 
 export interface ApiResponse<T> {
-  statusCode: number;
-  message: string;
-  data: T;
+  code: number;
+  msg: string;
+  data: null | T;
 }
 
-export type ApiPromiseResponse<T> = Promise<ApiResponse<T>> | Promise<any>;
+export type ApiPromiseResponse<T> = Promise<ApiResponse<T>>;
 
 const http = {
   get: <T>(url: string, config?: Config): ApiPromiseResponse<T> => instance.get(url, config),
