@@ -83,7 +83,7 @@ instance.interceptors.response.use(
 export interface ApiResponse<T> {
   code: number;
   msg: string;
-  data: null | T;
+  data: T;
 }
 
 export type ApiPromiseResponse<T> = Promise<ApiResponse<T>>;
