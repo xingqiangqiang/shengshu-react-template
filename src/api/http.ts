@@ -3,7 +3,11 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
 const instance = axios.create({
+  baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 120000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 interface Config extends AxiosRequestConfig {
@@ -12,7 +16,8 @@ interface Config extends AxiosRequestConfig {
 }
 
 instance.interceptors.request.use((config: Config) => {
-  const accessToken = Cookies.get('CaipAccessToken') || '';
+  const accessToken = Cookies.get('access_token') || '';
+  const accessTokenType = Cookies.get('token_type') || '';
   message.destroy(1);
   if (config?.showLoading) {
     message.loading({
@@ -26,7 +31,7 @@ instance.interceptors.request.use((config: Config) => {
     ...config,
     // header中添加鉴权
     headers: {
-      accessToken,
+      Authorization: `${accessTokenType} ${accessToken}`,
       ...config.headers,
     },
   };
@@ -40,7 +45,7 @@ instance.interceptors.response.use(
       if (response.data instanceof Blob || response.data instanceof ArrayBuffer) {
         return Promise.resolve(response);
       }
-      if (response.data.code === 0) {
+      if (!response.data.code) {
         return Promise.resolve(response.data);
       } else {
         if (!(response.config as Config).customMessage) {
@@ -67,6 +72,8 @@ instance.interceptors.response.use(
 
     if (401 === err.response.status) {
       errorMessage = '登录已过期，请重新登录';
+      Cookies.remove('access_token');
+      Cookies.remove('token_type');
       setTimeout(() => {
         window.location.replace(`${import.meta.env.BASE_URL}login`);
       }, 2000);
@@ -86,7 +93,7 @@ export interface ApiResponse<T> {
   data: T;
 }
 
-export type ApiPromiseResponse<T> = Promise<ApiResponse<T>>;
+export type ApiPromiseResponse<T> = Promise<ApiResponse<T> | any>;
 
 const http = {
   get: <T>(url: string, config?: Config): ApiPromiseResponse<T> => instance.get(url, config),
