@@ -1,9 +1,9 @@
 import url from '@/config/url';
 import { Spin } from 'antd';
 import React from 'react';
-import { Navigate, RouteObject, useRoutes } from 'react-router-dom';
+import { RouteObject, useRoutes } from 'react-router-dom';
 
-const { root, login, notFound, app, noPermission } = url;
+const { root, notFound, serverError } = url;
 
 const Routers: React.FC = () => {
   const renderRouter = (routers: RouteObject[]): RouteObject[] => {
@@ -16,7 +16,16 @@ const Routers: React.FC = () => {
       }
       return {
         ...item,
-        element: <React.Suspense fallback={<Spin tip="页面加载中..." />}>{item.element}</React.Suspense>,
+        element: (
+          <React.Suspense
+            fallback={
+              <Spin tip="页面加载中...">
+                <span />
+              </Spin>
+            }>
+            {item.element}
+          </React.Suspense>
+        ),
       };
     });
   };
@@ -24,24 +33,17 @@ const Routers: React.FC = () => {
   return useRoutes(
     renderRouter([
       {
-        path: root,
-        element: <Navigate to={login.path} />,
+        path: root.path,
+        element: <root.component />,
       },
-      {
-        path: login.path,
-        element: <login.component />,
-      },
-      {
-        path: app.path,
-        element: <app.component />,
-      },
+
       {
         path: notFound.path,
         element: <notFound.component />,
       },
       {
-        path: noPermission.path,
-        element: <noPermission.component />,
+        path: serverError.path,
+        element: <serverError.component />,
       },
     ]),
   );

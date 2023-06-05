@@ -5,29 +5,28 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "prebuild": "node imagemin.mjs",
     "build": "sh build/build.sh",
     "preview": "vite preview",
     "prettier": "prettier --check **/**/*.{tsx,ts,js}",
     "prettier:fix": "prettier --write **/**/*.{tsx,ts,js}",
-    "stylelint": "pnpm stylelint **/*{.css,.scss}",
-    "stylelint:fix": "pnpm stylelint **/*{.css,.scss} --fix",
-    "eslint": "pnpm eslint src --ext .js,.jsx,.ts,.tsx",
-    "eslint:fix": "pnpm eslint src --fix --ext  .js,.jsx,.ts,.tsx",
+    "stylelint": "stylelint **/*{.css,.scss}",
+    "stylelint:fix": "stylelint **/*{.css,.scss} --fix",
+    "eslint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "eslint:fix": "eslint src --fix --ext  .js,.jsx,.ts,.tsx",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
     "lintfix": "pnpm run prettier:fix\npnpm run stylelint:fix\npnpm run eslint:fix",
-    "ytt": "pnpm ytt"
+    "ytt": "npx ytt"
   },
   "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "pnpm run eslint:fix"
+    ],
     "**/*.{js,jsx,ts,tsx,cjs,less,scss,css,md}": [
       "pnpm run prettier:fix"
     ],
     "**/*.{less,scss,css}": [
       "pnpm run stylelint:fix"
-    ],
-    "**/*.{js,jsx,ts,tsx}": [
-      "pnpm run eslint:fix"
     ]
   },
   "keywords": [

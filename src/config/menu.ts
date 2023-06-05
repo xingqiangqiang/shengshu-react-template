@@ -1,7 +1,3 @@
-import url from './url';
-
-const { root, login, notFound, app } = url;
-
 type MenuItemType = {
   path: string; // 路径
   title: string; // 菜单名称
@@ -14,23 +10,6 @@ type MenuListType = {
   [key: string]: MenuItemType;
 };
 
-const menuList: MenuListType = {
-  root: {
-    path: root,
-    title: '/',
-  },
-  login: {
-    path: login.path,
-    title: login.title,
-  },
-  notFound: {
-    path: notFound.path,
-    title: notFound.title,
-  },
-  app: {
-    path: app.path,
-    title: app.title,
-  },
-};
+const menuList: MenuListType = {};
 
 export default menuList;

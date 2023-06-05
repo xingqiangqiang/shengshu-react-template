@@ -1,0 +1,84 @@
+.ss-modal {
+  :global {
+    .ant-modal-content {
+      padding: 0;
+      background: $bg-black-3;
+      border-radius: 12px;
+      box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+
+      .ant-modal-close-x {
+        .anticon {
+          color: rgba($bg-white, 0.45);
+        }
+      }
+
+      .ant-modal-header {
+        margin-bottom: 0;
+        background: $bg-black-2;
+        border-radius: 12px 12px 0 0;
+        box-shadow: inset 0 -1px 0 rgb(61 73 92 / 20%);
+
+        .ant-modal-title {
+          height: 56px;
+          padding: 0 24px;
+          font-family: $font-family-pingfang;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 56px;
+          color: $brand-color-3;
+        }
+      }
+
+      .ant-modal-body {
+        padding: 24px 40px;
+        background: $bg-black-3;
+      }
+
+      .ant-modal-footer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 52px;
+        padding: 0 16px;
+        margin: 0;
+        background: $bg-black-3;
+        border-radius: 0 0 12px 12px;
+
+        .ant-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 32px;
+          border-radius: 4px;
+          box-shadow: 0 2px 0 rgba($bg-black, 0.016);
+
+          span {
+            height: 22px;
+            font-family: $font-family-pingfang;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            color: $tc-white-85;
+          }
+
+          &:not(.ant-btn-primary) {
+            background: none;
+            border: 1px solid rgb(61 73 92 / 25%);
+
+            span {
+              color: $tc-white-65;
+              box-shadow: 0 2px 0 rgb(0 0 0 / 1.6%);
+            }
+          }
+        }
+
+        .ant-btn-primary {
+          background: linear-gradient(271.38deg, $brand-color-2 0%, $brand-color-3 99.12%);
+          box-shadow: 0 2px 0 rgb(0 0 0 / 4.3%);
+        }
+      }
+    }
+  }
+}

@@ -79,9 +79,7 @@ export default defineConfig({
     },
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/assets/style/public.scss";
-          @import "@/assets/style/variables.scss";
-          @import "@/assets/style/mixin.scss";`,
+        additionalData: `@import "@/assets/index.scss";`,
       },
     },
   },

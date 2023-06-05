@@ -3,16 +3,6 @@
   animation: fade-in $duration ease-in $delay forwards;
 }
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 @mixin text-overflow($number: 1) {
   @if $number == 1 {
     overflow: hidden;

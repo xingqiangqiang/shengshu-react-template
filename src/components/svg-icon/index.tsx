@@ -1,16 +1,19 @@
 import React from 'react';
 
-interface PropsType {
+interface Props {
   name: string;
   color?: string;
-  size?: string;
+  size: string;
   style?: any;
+  onClick?: () => void;
+  className?: string;
 }
 
-const SvgIcon: React.FC<PropsType> = ({ name, color, size, style }) => {
+const SvgIcon: React.FC<Props> = ({ name, color, size, style, onClick, className }) => {
   const symbolId = `#icon-${name}`;
+
   return (
-    <svg aria-hidden="true" width={size} height={size} style={style}>
+    <svg className={className} aria-hidden="true" width={size} height={size} style={style} onClick={onClick}>
       <use href={symbolId} color={color} />
     </svg>
   );

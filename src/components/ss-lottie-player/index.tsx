@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 
 import styles from './index.module.scss';
 
-interface PropsType {
+interface Props {
   /**
    * json动画文件
    */
@@ -18,14 +18,7 @@ interface PropsType {
   onClick?: () => void;
 }
 
-const LottiePlayerAnimation: React.FC<PropsType> = ({
-  jsonFile,
-  playState,
-  className,
-  loop = false,
-  onStateChange,
-  onClick,
-}) => {
+const SsLottiePlayer: React.FC<Props> = ({ jsonFile, playState, className, loop = false, onStateChange, onClick }) => {
   const player = React.useRef<Player>(null);
 
   useEffect(() => {
@@ -49,10 +42,10 @@ const LottiePlayerAnimation: React.FC<PropsType> = ({
   };
 
   return (
-    <div className={`${styles.container} ${className}`} onClick={onClick}>
+    <div className={`${styles['ss-lottie-player']} ${className}`} onClick={onClick}>
       <Player className="lottie-player" onEvent={onEvent} ref={player} src={jsonFile} loop={loop} />
     </div>
   );
 };
 
-export default LottiePlayerAnimation;
+export default SsLottiePlayer;
