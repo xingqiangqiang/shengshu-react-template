@@ -1,0 +1,36 @@
+@charset "UTF-8";
+@import 'antd/dist/reset.css';
+
+#root {
+  height: 100%;
+}
+
+body {
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  scrollbar-width: none; // 兼容火狐浏览器
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.ant-spin-nested-loading {
+  height: 100%;
+
+  div {
+    .ant-spin {
+      top: 50%;
+      transform: translateY(-50%);
+
+      .ant-spin-text {
+        color: #009cfe;
+        text-shadow: none;
+      }
+    }
+  }
+}

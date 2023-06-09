@@ -1,0 +1,27 @@
+.app {
+  @include fadein;
+
+  :global {
+    .layout-header {
+      height: 64px;
+      padding-inline: 50px;
+      line-height: 64px;
+      color: $tc-black-85;
+      text-align: center;
+      background-color: $bg-white;
+    }
+
+    .layout-content {
+      min-height: 80vh;
+      color: $tc-black-85;
+      text-align: center;
+      background-color: $bg-white;
+    }
+
+    .layout-footer {
+      color: $tc-black-85;
+      text-align: center;
+      background-color: $bg-white;
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import url from '@/config/url';
+import router from '@/config/routes';
 import { Spin } from 'antd';
 import React from 'react';
 import { RouteObject, useRoutes } from 'react-router-dom';
 
-const { root, notFound, serverError } = url;
+const { root, notFound, serverError } = router;
 
 const Routers: React.FC = () => {
   const renderRouter = (routers: RouteObject[]): RouteObject[] => {
@@ -35,15 +35,21 @@ const Routers: React.FC = () => {
       {
         path: root.path,
         element: <root.component />,
+        children: [
+          {
+            path: root.path,
+            // element: <Navigate to={} />,
+          },
+        ],
       },
 
       {
-        path: notFound.path,
-        element: <notFound.component />,
-      },
-      {
         path: serverError.path,
         element: <serverError.component />,
+      },
+      {
+        path: notFound.path,
+        element: <notFound.component />,
       },
     ]),
   );

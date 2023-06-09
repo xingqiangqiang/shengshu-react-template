@@ -1,5 +1,5 @@
-import { RootState } from '@/store';
-import { Button } from 'antd';
+import { RootState } from '@/config/store';
+import { Button, Space } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { add, reduce } from '../reducer';
@@ -17,12 +17,15 @@ const IndexView = () => {
 
   return (
     <div>
-      <Button type="primary" onClick={() => handleClick()}>
-        加10
-      </Button>
-      <Button type="primary" onClick={() => handleClickReduce()}>
-        减1
-      </Button>
+      <Space size={16}>
+        <Button type="primary" onClick={() => handleClick()}>
+          加10
+        </Button>
+        <Button type="primary" onClick={() => handleClickReduce()}>
+          减1
+        </Button>
+      </Space>
+
       <div>{count}</div>
     </div>
   );

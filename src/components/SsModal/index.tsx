@@ -1,4 +1,4 @@
-import IconFont from '@/components/iconfont';
+import IconFont from '../IconFont';
 import type { ModalProps } from 'antd';
 import { Modal } from 'antd';
 import classNames from 'classnames';

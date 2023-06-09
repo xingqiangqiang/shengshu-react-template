@@ -1,8 +1,8 @@
 import { message } from 'antd';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Cookies from 'js-cookie';
 
-const instance = axios.create({
+const instance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
   timeout: 120000,
   headers: {
@@ -45,7 +45,7 @@ instance.interceptors.response.use(
       if (response.data instanceof Blob || response.data instanceof ArrayBuffer) {
         return Promise.resolve(response);
       }
-      if (!response.data.code) {
+      if (response.data) {
         return Promise.resolve(response.data);
       } else {
         if (!(response.config as Config).customMessage) {
@@ -58,16 +58,18 @@ instance.interceptors.response.use(
         return Promise.reject(response.data);
       }
     }
+    return Promise.resolve(response);
   },
   (err) => {
-    console.log('error:', err);
     let errorMessage: string = err.message || '';
 
     if (err.response.status === 500) {
       errorMessage = '请求服务器失败，请重试！';
+      window.location.href = `${import.meta.env.BASE_URL}500`;
     }
     if (403 === err.response.status) {
-      window.location.href = `${import.meta.env.BASE_URL}no-permission`;
+      errorMessage = '无访问权限，请联系系统管理员！';
+      // window.location.href = `${import.meta.env.BASE_URL}no-permission`;
     }
 
     if (401 === err.response.status) {
@@ -95,7 +97,7 @@ export interface ApiResponse<T> {
 
 export type ApiPromiseResponse<T> = Promise<ApiResponse<T> | any>;
 
-const http = {
+const index = {
   get: <T>(url: string, config?: Config): ApiPromiseResponse<T> => instance.get(url, config),
   post: <T>(url: string, data?: Record<string, any>, config?: Config): ApiPromiseResponse<T> =>
     instance.post(url, data, config),
@@ -104,4 +106,4 @@ const http = {
   delete: <T>(url: string, config?: Config): ApiPromiseResponse<T> => instance.delete(url, config),
 };
 
-export default http;
+export default index;

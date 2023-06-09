@@ -1,4 +1,4 @@
-import reducer from '@/config/reducer';
+import reducer from './reducer';
 import { configureStore } from '@reduxjs/toolkit';
 import { createLogger } from 'redux-logger';
 

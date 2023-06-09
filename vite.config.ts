@@ -44,7 +44,7 @@ export default defineConfig({
     react(),
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹
-      iconDirs: [resolve(process.cwd(), 'src/images/svg')],
+      iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
       /**

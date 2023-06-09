@@ -96,7 +96,7 @@ pnpm run build
 
 ```
 '/mock/api/v1': {
-    target: 'http://xxx.xxxx.xxx',
+    target: 'index://xxx.xxxx.xxx',
     rewrite: (path) => path.replace(/^\/base/, ''),
     changeOrigin: true,
 }
@@ -106,7 +106,7 @@ pnpm run build
 
 ```
 VITE_API_URL = /api
-VITE_SOURCE_URL = http://x.x.x.x:xxxx/
+VITE_SOURCE_URL = index://x.x.x.x:xxxx/
 ```
 
 ##### css模块化规范

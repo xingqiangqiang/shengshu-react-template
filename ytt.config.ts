@@ -3,9 +3,8 @@ import { defineConfig } from 'yapi-to-typescript';
 const config = [
   {
     // 分类ids，可以将多个分类中的接口信息生成到同一个ts文件中
-    ids: [59],
-    // 输出的ts文件存储模块文件夹名称，如本配置将输出到 src/ytt-typing/index.ts中
-    name: 'login',
+    ids: [4131],
+    // name: 'login',
   },
 ];
 
@@ -30,19 +29,19 @@ export default defineConfig(
   config.map((item) => ({
     // 1. 此处配置yapi的访问地址
     serverUrl: 'http://yapi.realai-inc.cn',
-    typesOnly: false,
+    // 只要类型映射
+    typesOnly: true,
     target: 'typescript',
     reactHooks: {
       enabled: false,
     },
-    prodEnvName: 'production',
-    outputFilePath: `src/ytt-type/${item.name}/index.ts`,
-    requestFunctionFilePath: `src/ytt-type/${item.name}/request.ts`,
+    outputFilePath: `src/services/types/index.ts`,
+    // requestFunctionFilePath: `src/services/${item.name}/request.ts`,
     dataKey: 'data',
     projects: [
       {
         // 2. 此处配置yapi项目的访问token
-        token: '25f374d369df0c03df57fb8cb23382c6a379f38eb2239aeb5408f4cc9405b692',
+        token: '97489ed020dc8e77fa4499ccfd6c51cd3d87a0241bc84d0e320131110b96858b',
         categories: createCategories(item.ids),
       },
     ],
